@@ -1356,24 +1356,24 @@ section {
 /* Subscription Offer Banner */
 .subscription-offer-banner {
     max-width: 900px;
-    height: 300px;
-  
-    margin: 0 auto 50px;
+    height: auto;
+    margin: 40px auto;
     background-color: #1f1f3d;
     border-radius: 15px;
     overflow: hidden;
-    border: 3px solid #6868ff;
+    border: 3px solid #9370DB;
     position: relative;
 }
 
 .special-tag {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    width: fit-content;
+    top: 0px;
+    right: 0px;
     background-color: #9370DB;
     color: white;
     padding: 5px 15px;
-    border-radius: 20px;
+    border-bottom-left-radius: 8px;
     font-size: 0.9rem;
     z-index: 1;
 }
@@ -1384,25 +1384,30 @@ section {
 }
 
 .offer-image {
-    flex: 0 0 40%;
+    flex: 0 0 50%;
     padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .offer-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     display: block;
-    border-radius: 20px;
+    border-radius: 12px;
 }
 
 .offer-details {
-    flex: 0 0 60%;
+    flex: 0 0 50%;
+    height: auto;
     padding: 40px 30px 30px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: center;
     gap: -10px;
 }
 
@@ -1459,8 +1464,7 @@ section {
 .offer-details h3 {
     color: #a29aff;
     font-size: 1.6rem;
-    margin-bottom: 20px;
-    font-weight: 600;
+    font-weight: 800;
 }
 
 .free-months {
@@ -1470,7 +1474,7 @@ section {
     background-color: #2a2a4a;
     padding: 10px 15px;
     border-radius: 10px;
-    margin: 20px auto;
+    margin: 0px auto;
     width: fit-content;
     display: inline-block;
 }
@@ -1489,18 +1493,19 @@ section {
 .offer-condition {
     color: #cccccc;
     font-size: 0.9rem;
-    margin-bottom: 25px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .offer-timer {
     background-color: #2a2a4a;
-    padding: 15px;
+    padding: 8px 40px;
     border-radius: 10px;
 }
 
 .offer-timer p {
     color: #cccccc;
-    margin: 0 0 10px 0;
+    margin: 0 0 0px 0;
     font-size: 0.9rem;
     text-align: center;
 }
@@ -1508,7 +1513,7 @@ section {
 .countdown {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
 }
 
 .time-unit {
@@ -1518,8 +1523,8 @@ section {
 
 .time-value {
     color: white;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .time-label {
