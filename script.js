@@ -1,8 +1,83 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Video Testimonials Carousel
+    function setupVideoTestimonialsCarousel() {
+        const videoTestimonials = document.querySelectorAll('.video-testimonial');
+        const prevVideoBtn = document.querySelector('.video-nav-btn.prev-btn');
+        const nextVideoBtn = document.querySelector('.video-nav-btn.next-btn');
+        
+        if (!videoTestimonials.length || !prevVideoBtn || !nextVideoBtn) {
+            console.log('Missing elements for video testimonials carousel');
+            return;
+        }
+        
+        let currentIndex = 0;
+        
+        // Function to show a specific testimonial
+        function showTestimonial(index) {
+            // Hide all testimonials
+            videoTestimonials.forEach(testimonial => {
+                testimonial.style.display = 'none';
+                testimonial.classList.remove('active');
+            });
+            
+            // Show the selected testimonial
+            videoTestimonials[index].style.display = 'block';
+            videoTestimonials[index].classList.add('active');
+            
+            console.log('Showing testimonial at index:', index);
+        }
+        
+        // Initialize - show the first testimonial
+        showTestimonial(currentIndex);
+        
+        // Previous button click handler
+        prevVideoBtn.onclick = function() {
+            currentIndex = (currentIndex - 1 + videoTestimonials.length) % videoTestimonials.length;
+            showTestimonial(currentIndex);
+            console.log('Previous button clicked, new index:', currentIndex);
+        };
+        
+        // Next button click handler
+        nextVideoBtn.onclick = function() {
+            currentIndex = (currentIndex + 1) % videoTestimonials.length;
+            showTestimonial(currentIndex);
+            console.log('Next button clicked, new index:', currentIndex);
+        };
+        
+        // For desktop view, we'll show all testimonials
+        function handleResize() {
+            if (window.innerWidth > 768) {
+                // Desktop view - show all testimonials
+                videoTestimonials.forEach(testimonial => {
+                    testimonial.style.display = 'block';
+                });
+            } else {
+                // Mobile view - only show the current testimonial
+                showTestimonial(currentIndex);
+            }
+        }
+        
+        // Handle resize events
+        window.addEventListener('resize', handleResize);
+        
+        // Initial setup based on current window size
+        handleResize();
+        
+        console.log('Video testimonials carousel initialized');
+    }
+    
+    // Set up the carousel
+    setupVideoTestimonialsCarousel();
+
     // Fixed Contact Button functionality
     const fixedContactBtn = document.querySelector('.fixed-contact-btn');
     const contactPopup = document.querySelector('.contact-popup');
     const closePopupBtn = document.querySelector('.close-popup-btn');
+    
+    // Create popup overlay and detail popup elements
+    const popupOverlay = document.createElement('div');
+    popupOverlay.className = 'popup-overlay';
+    document.body.appendChild(popupOverlay);
     
     if (fixedContactBtn && contactPopup && closePopupBtn) {
         // Open popup when contact button is clicked
@@ -100,11 +175,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const moreDetailsButtons = document.querySelectorAll('.more-details-btn');
     const backButtons = document.querySelectorAll('.back-btn');
     
-    // Make the More Details buttons flip the cards
+    // Get modal elements
+    const modal = document.getElementById('cardModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const closeModalBtn = document.querySelector('.close-modal');
+    
+    // Handle More Details buttons based on screen size
     moreDetailsButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation(); // Prevent the card click event from firing
+            
             const card = this.closest('.flip-card');
             const cardFront = card.querySelector('.flip-card-front');
             const cardBack = card.querySelector('.flip-card-back');
@@ -118,7 +201,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 cardBack.classList.add('dark-back');
             }
             
-            card.classList.add('flipped');
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                // Show modal in mobile view
+                showCardModal(card);
+            } else {
+                // Flip card in desktop view
+                card.classList.add('flipped');
+            }
         });
     });
     
@@ -127,10 +217,115 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation(); // Prevent the card click event from firing
+            
             const card = this.closest('.flip-card');
             card.classList.remove('flipped');
         });
     });
+    
+    // Function to show card modal
+    function showCardModal(card) {
+        // Get content from the front and back of the card
+        const frontContent = card.querySelector('.flip-card-front');
+        const backContent = card.querySelector('.flip-card-back');
+        
+        // Get the title from front card and list items from back card
+        const frontTitle = frontContent.querySelector('h3').textContent;
+        const listItems = Array.from(backContent.querySelectorAll('li')).map(item => item.textContent);
+        
+        // Get images from the card carousel
+        const cardImageCarousel = frontContent.querySelector('.card-image-carousel');
+        const modalImageCarousel = document.getElementById('modalImageCarousel');
+        
+        // Clear previous content
+        modalImageCarousel.innerHTML = '';
+        
+        // Add images to modal carousel
+        if (cardImageCarousel && cardImageCarousel.querySelectorAll('img').length > 0) {
+            const images = Array.from(cardImageCarousel.querySelectorAll('img'));
+            
+            // Make sure the carousel is visible
+            modalImageCarousel.style.display = 'block';
+            
+            // Clone and add each image to the modal carousel
+            images.forEach((img, index) => {
+                const clonedImg = img.cloneNode(true);
+                // Set display style directly
+                clonedImg.style.display = index === 0 ? 'block' : 'none';
+                if (index === 0) {
+                    clonedImg.classList.add('active');
+                }
+                modalImageCarousel.appendChild(clonedImg);
+            });
+            
+            // Only add navigation buttons if there are multiple images
+            if (images.length > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.className = 'modal-carousel-nav prev';
+                prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                
+                const nextButton = document.createElement('button');
+                nextButton.className = 'modal-carousel-nav next';
+                nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                
+                modalImageCarousel.appendChild(prevButton);
+                modalImageCarousel.appendChild(nextButton);
+                
+                // Set up carousel navigation
+                let currentImageIndex = 0;
+                const totalImages = images.length;
+                
+                prevButton.addEventListener('click', () => {
+                    const modalImages = modalImageCarousel.querySelectorAll('img');
+                    modalImages[currentImageIndex].style.display = 'none';
+                    modalImages[currentImageIndex].classList.remove('active');
+                    
+                    currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+                    
+                    modalImages[currentImageIndex].style.display = 'block';
+                    modalImages[currentImageIndex].classList.add('active');
+                });
+                
+                nextButton.addEventListener('click', () => {
+                    const modalImages = modalImageCarousel.querySelectorAll('img');
+                    modalImages[currentImageIndex].style.display = 'none';
+                    modalImages[currentImageIndex].classList.remove('active');
+                    
+                    currentImageIndex = (currentImageIndex + 1) % totalImages;
+                    
+                    modalImages[currentImageIndex].style.display = 'block';
+                    modalImages[currentImageIndex].classList.add('active');
+                });
+            }
+        } else {
+            // Hide carousel container if no images
+            modalImageCarousel.style.display = 'none';
+        }
+        
+        // Update modal content
+        modalTitle.textContent = frontTitle;
+        modalBody.innerHTML = `<ul>${listItems.map(item => `<li>${item}</li>`).join('')}</ul>`;
+        
+        // Show modal and overlay
+        modal.classList.add('show');
+        modalOverlay.classList.add('show');
+    }
+    
+    // Function to close modal
+    function closeModal() {
+        modal.classList.remove('show');
+        modalOverlay.classList.remove('show');
+    }
+    
+    // Close modal when clicking the close button
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
+    
+    // Close modal when clicking the overlay
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeModal);
+    }
     
     // Make cards clickable (but not when clicking buttons)
     flipCards.forEach(card => {
@@ -271,4 +466,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Run on scroll
     window.addEventListener('scroll', animateOnScroll);
+    
+    // Handle window resize for responsive behavior
+    window.addEventListener('resize', function() {
+        // Close any open popups on resize
+        const detailPopup = document.querySelector('.detail-popup');
+        if (detailPopup && detailPopup.classList.contains('active')) {
+            detailPopup.classList.remove('active');
+            popupOverlay.classList.remove('active');
+        }
+    });
 });
