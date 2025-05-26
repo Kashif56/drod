@@ -28,7 +28,7 @@ h1, h2, h3, h4 {
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1;
 }
 
 h2 {
@@ -118,7 +118,8 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0px;
+    padding-top: 20px;
+    padding-bottom: 40px;
     overflow: hidden;
     background-image: linear-gradient(rgba(41, 50, 65, 0.85), rgba(27, 35, 58, 0.9)), url("https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=1080&auto=format&fit=crop");
     background-size: cover;
