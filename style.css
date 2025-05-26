@@ -287,7 +287,6 @@ section {
     padding: 20px;
     text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: white;
 }
 
 .subscription-title {
@@ -1355,7 +1354,7 @@ section {
 
 /* Subscription Offer Banner */
 .subscription-offer-banner {
-    max-width: 900px;
+    max-width: 1160px;
     height: auto;
     margin: 40px auto;
     background-color: #1f1f3d;
@@ -1392,7 +1391,7 @@ section {
 }
 
 .offer-image img {
-    width: 100%;
+    width: 80%;
     height: auto;
     object-fit: cover;
     display: block;
@@ -1558,7 +1557,7 @@ section {
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 30px 20px;
+    padding: 10px 20px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -1585,7 +1584,7 @@ section {
     border-bottom-right-radius: 12px;
     margin: 0 auto 15px;
     position: relative;
-    top: -30px;
+    top: -15px;
 }
 
 .pricing-header {
@@ -1604,11 +1603,11 @@ section {
 }
 
 .featured .pricing-header{
-    margin-top: -50px;
+    margin-top: -50px !important;
 }
 
 .pricing-header{
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 .price {
@@ -1620,11 +1619,15 @@ section {
     margin-bottom: 10px;
 }
 
+.pricing-features li{
+    direction: rtl;
+}
+
 
 
 .price-details {
     margin-top: -10px !important;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #666;
     margin: 0 0 20px 0;
 }
@@ -1820,22 +1823,18 @@ section {
 }
 
 .faq-item {
-    background-color: white;
-    border-radius: 10px;
     margin-bottom: 15px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     border-left: 4px solid transparent;
+    border-bottom: 1px solid #ccc;
+    color: #31318a;
 }
 
 .faq-item:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.faq-item.active {
-    border-left-color: #9370DB;
-}
 
 .faq-question {
     padding: 20px 25px;
@@ -1844,6 +1843,7 @@ section {
     align-items: center;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    
 }
 
 .faq-question:hover {
@@ -1854,7 +1854,7 @@ section {
     margin: 0;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #333;
+    color: #31318a !important;
     transition: color 0.3s ease;
 }
 
@@ -1866,9 +1866,10 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
+    width: 10px !important;
+    height: 10px !important;
     color: #9370DB;
+    font-size: 0.8rem;
     transition: transform 0.3s ease;
 }
 
