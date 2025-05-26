@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piano & Organ Subscription</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Using system UI fonts instead of imported fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -44,9 +44,10 @@
                                     <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Piano sheet music">
                                     <img src="https://images.unsplash.com/photo-1513883049090-d0b7439799bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Piano keys close-up">
                                 </div>
-                                
+                               
                                 <h3>מעל 3000 שירים ללמידה</h3>
                                 <p>אוסף מקיף של שירים מכל הסגנונות והתקופות</p>
+                           
                                 <button class="more-details-btn">פרטים נוספים</button>
                             </div>
                         </div>
@@ -69,7 +70,7 @@
                 <!-- Card 2 - Song Accompaniment -->
                 <div class="flip-card">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front blue-card">
+                        <div class="flip-card-front dark-card">
                             <div class="card-content">
                                 <div class="card-image-carousel">
                                     <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Teacher explaining music">
@@ -227,27 +228,15 @@
         <section class="human-accompaniment">
             <div class="accompaniment-container">
                 <div class="chat-preview">
-                    <div class="chat-box">
-                        <div class="chat-message teacher">
-                            <p>הנה הסרטון שהבטחתי - התמקד ביד שמאל שלך במחצית השנייה.</p>
-                            <span class="time">9:00 ✓✓</span>
-                        </div>
-                        <div class="video-message">
-                            <div class="video-thumbnail">
-                                <div class="play-button">
-                                    <i class="play-icon">▶</i>
-                                </div>
-                                <img src="https://images.unsplash.com/photo-1552422535-c45813c61732?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Piano hands">
-                            </div>
-                            <span class="time">9:03 ✓✓</span>
-                        </div>
-                        <div class="chat-message student">
-                            <p>הבנתי! אתאמן הערב !!! 😀</p>
-                            <span class="time">9:32 ✓✓</span>
+                    <div class="music-icon-corner"><i class="fas fa-music"></i></div>
+                    <div class="guitar-icon-corner"><i class="fas fa-guitar"></i></div>
+                    <div class="chat-box-container">
+                        <div class="dotted-ring"></div>
+                        <div class="chat-box">
+                            <img class="chat-image" src="https://preview--text-on-arrival-page.lovable.app/lovable-uploads/dd07eabe-c3c5-470d-8aab-52f1c6eb591d.png" alt="">
                         </div>
                     </div>
                 </div>
-                
                 <div class="accompaniment-content">
                     <h2 class="accompaniment-title" dir="rtl"><span class="highlight">הליווי האנושי</span> שעושה את ההבדל</h2>
                     
@@ -274,27 +263,29 @@
                     
                     <div class="testimonials-row">
                         <div class="testimonial">
-                            <div class="rating">4.9★</div>
-                            <div class="testimonial-header">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Yossi Levi">
-                                <div>
-                                    <h4>Yossi Levi</h4>
-                                    <p class="location">Raanana</p>
-                                </div>
+                            <div class="rating">4.9 <span class="star"> ★</span></div>
+                            <div class="upper-section"></div>
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="יוסי לוי">
                             </div>
-                            <p class="testimonial-text" dir="rtl">"אחרי שניסיתי קורסים דיגיטליים אחרים, סוף סוף מצאתי מקום שבו אני לא לבד. התמיכה האישית מעולה."</p>
+                            <div class="text-section">
+                                <h4 class="testimonial-name">יוסי לוי</h4>
+                                <p class="testimonial-location">רעננה</p>
+                                <p class="testimonial-text" dir="rtl">"אחרי ניסיון עם קורסים דיגיטליים אחרים, סוף סוף מצאתי קורס שבו אני לא לבד. התמיכה האישית מעולה."</p>
+                            </div>
                         </div>
                         
                         <div class="testimonial">
-                            <div class="rating">5.0★</div>
-                            <div class="testimonial-header">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Avi Itzhaki">
-                                <div>
-                                    <h4>Avi Itzhaki</h4>
-                                    <p class="location">Streets</p>
-                                </div>
+                            <div class="rating">5.0 <span class="star"> ★</span></div>
+                            <div class="upper-section"></div>
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="אבי יצחקי">
                             </div>
-                            <p class="testimonial-text" dir="rtl">"הליווי האנושי עשה את כל ההבדל עבורי. כשנתקעתי בניגון אקורדים, המורה היה זמין לעזור מיידית."</p>
+                            <div class="text-section">
+                                <h4 class="testimonial-name">אבי יצחקי</h4>
+                                <p class="testimonial-location">רחובות</p>
+                                <p class="testimonial-text" dir="rtl">"הליווי האנושי עשה את כל ההבדל בשבילי. כשנתקעתי בניגון אקורדים, המורה היה זמין לעזור מיד."</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -302,45 +293,49 @@
         </section>
 
         <!-- Why Choose Us Section -->
-        <section class="why-choose-us" dir="rtl">
+        <section class="why-choose-us">
             <h2 class="section-title">למה לבחור בנו</h2>
             
-            <div class="reasons-grid">
-                <!-- Reason 1 -->
+            <div class="reasons-grid" >
+                <!-- Card 4: Public Trust -->
                 <div class="reason-card">
                     <div class="reason-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-shield-alt custom-icon"></i>
                     </div>
-                    <h3>תו אמון ציבורי</h3>
+                    <h3>תו אמון הציבור</h3>
                     <p>עומדים בסטנדרטים הגבוהים ביותר של הוגנות, שירות ושקיפות</p>
                 </div>
-                
-                <!-- Reason 2 -->
+                <!-- Card 2: Ministry of Education -->
                 <div class="reason-card">
                     <div class="reason-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-medal custom-icon"></i>
                     </div>
                     <h3>מוכר על ידי משרד החינוך</h3>
                     <p>נבחר לפיילוט רשמי בבתי ספר כחלק מתוכנית החדשנות החינוכית</p>
                 </div>
-                
-                <!-- Reason 3 -->
-                <div class="reason-card">
+
+                 <!-- Card 3: 15 Years Experience -->
+                 <div class="reason-card">
                     <div class="reason-icon">
-                        <i class="fas fa-history"></i>
+                        <i class="fas fa-history custom-icon"></i>
                     </div>
-                    <h3>15 שנות ניסיון בלמידה מקוונת</h3>
+                    <h3>15 שנה בלימוד אונליין</h3>
                     <p>מוותיקים בתחום - עם תוצאות מוכחות</p>
                 </div>
-                
-                <!-- Reason 4 -->
+                <!-- Card 1: Human Accompaniment -->
                 <div class="reason-card">
                     <div class="reason-icon">
-                        <i class="fas fa-user-friends"></i>
+                        <i class="fas fa-user-friends custom-icon"></i>
                     </div>
                     <h3>ליווי אנושי אמיתי</h3>
                     <p>כמעט כמו מורה פרטי - אבל גמיש, זמין ונגיש לכולם</p>
                 </div>
+                
+                
+                
+               
+                
+                
             </div>
         </section>
         
@@ -517,13 +512,13 @@
                 </div>
             </div>
             
-            <div class="pricing-grid" dir="rtl">
+            <div class="pricing-grid">
                 <!-- Semi-annual Plan -->
-                <div class="pricing-card">
+                <div class="pricing-card" dir="rtl">
                     <div class="pricing-header">
                         <h3>חצי שנתי</h3>
                         <div class="price">
-                            <span class="currency">₪</span>149
+                            ₪149
                         </div>
                         <p class="price-details">ב-6 תשלומים של 149 ש"ח לחודש</p>
                     </div>
@@ -550,12 +545,12 @@
                 </div>
                 
                 <!-- Annual Plan -->
-                <div class="pricing-card featured">
+                <div class="pricing-card featured" dir="rtl">
+                    <div class="most-profitable">המשתלם ביותר</div>
                     <div class="pricing-header">
-                        <div class="most-profitable">המשתלם ביותר</div>
-                        <h3 class="featured-title">שנתי</h3>
+                        <h3 class="featured-title">Annual</h3>
                         <div class="price">
-                            <span class="currency">₪</span>99
+                            ₪99
                         </div>
                         <p class="price-details">ב-12 תשלומים של 99 ש"ח לחודש</p>
                     </div>
@@ -582,11 +577,11 @@
                 </div>
                 
                 <!-- Three Months Plan -->
-                <div class="pricing-card">
+                <div class="pricing-card" dir="rtl">
                     <div class="pricing-header">
                         <h3>שלושה חודשים</h3>
                         <div class="price">
-                            <span class="currency">₪</span>199
+                            ₪199
                         </div>
                         <p class="price-details">ב-3 תשלומים של 199 ש"ח לחודש</p>
                     </div>
@@ -760,6 +755,7 @@
             </div>
         </section>
 
+      
        
        
     </div>
