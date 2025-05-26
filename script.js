@@ -467,6 +467,54 @@ document.addEventListener('DOMContentLoaded', function() {
     // Run on scroll
     window.addEventListener('scroll', animateOnScroll);
     
+    // Countdown Timer functionality
+    function startCountdownTimer() {
+        const countdown = document.querySelector('.countdown');
+        if (!countdown) return;
+        
+        // Get the time values from HTML
+        const timeValues = countdown.querySelectorAll('.time-value');
+        if (timeValues.length !== 3) return;
+        
+        // Initial values (hours, minutes, seconds)
+        let hours = parseInt(timeValues[0].textContent);
+        let minutes = parseInt(timeValues[1].textContent);
+        let seconds = parseInt(timeValues[2].textContent);
+        
+        // Update the countdown every second
+        const timer = setInterval(function() {
+            // Decrease seconds
+            seconds--;
+            
+            // Handle time rollover
+            if (seconds < 0) {
+                seconds = 59;
+                minutes--;
+                
+                if (minutes < 0) {
+                    minutes = 59;
+                    hours--;
+                    
+                    if (hours < 0) {
+                        // Timer completed
+                        clearInterval(timer);
+                        hours = 0;
+                        minutes = 0;
+                        seconds = 0;
+                    }
+                }
+            }
+            
+            // Update the display
+            timeValues[0].textContent = hours.toString().padStart(2, '0');
+            timeValues[1].textContent = minutes.toString().padStart(2, '0');
+            timeValues[2].textContent = seconds.toString().padStart(2, '0');
+        }, 1000);
+    }
+    
+    // Start the countdown timer
+    startCountdownTimer();
+    
     // Handle window resize for responsive behavior
     window.addEventListener('resize', function() {
         // Close any open popups on resize
