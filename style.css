@@ -175,9 +175,15 @@ section {
     font-size: 3.5rem;
     color: #9b87f5;
     margin-bottom: 15px;
-    line-height: 1.2;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     font-weight: 1000;
+}
+
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2rem;
+        font-weight: 600;
+    }
 }
 
 .hero-subtitle {
@@ -628,6 +634,44 @@ section {
     border-radius: 12px;
     position: relative;
     z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .chat-image {
+        width: 90%;
+        margin: 0px 5%;
+    }
+
+    .dotted-ring {
+        width: 90% !important;
+        height: 500px !important;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* Music Corner Icons */
+    .music-icon-corner,
+    .guitar-icon-corner {
+        position: absolute;
+        color: #8169ec;
+        font-size: 35px;
+        z-index: 10;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .music-icon-corner {
+        top: -3% !important;
+        right: 14% !important;
+    }
+
+    .guitar-icon-corner {
+        top: -8% !important;
+        right: 5% !important;
+        
+    }
+
+
 }
 
 /* Dotted Ring Oval */
